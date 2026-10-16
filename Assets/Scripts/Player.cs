@@ -65,15 +65,22 @@ public class Player : MonoBehaviour
         rb.AddForce(new Vector2(0f, -properties.Gravity));
     }
 
-    private void HandleCollision()
-    {
-        if (properties.HasGravity) return;
-        float realForwardSpeed = Vector2.Dot(rb.linearVelocity, transform.up);
 
-        if (Mathf.Abs(properties.currentThrottleSpeed) > Mathf.Abs(realForwardSpeed))
-            properties.currentThrottleSpeed = realForwardSpeed;
+    private void HandleCollision(Collision2D collision)
+    {
+        Vector2 intended = (Vector2)transform.up * Mathf.Sign(properties.currentThrottleSpeed);
+
+        float headOn = Vector2.Dot(intended, collision.GetContact(0).normal);
+
+        if (headOn < -0.5f)
+        {
+            float realForwardSpeed = Vector2.Dot(rb.linearVelocity, transform.up);
+
+            if (Mathf.Abs(properties.currentThrottleSpeed) > Mathf.Abs(realForwardSpeed))
+                properties.currentThrottleSpeed = realForwardSpeed;
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) => HandleCollision();
-    private void OnCollisionStay2D(Collision2D collision) => HandleCollision();
+    private void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision);
+    private void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision);
 }
