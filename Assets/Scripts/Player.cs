@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
 
     private void HandleCollision()
     {
+        if (properties.HasGravity) return;
         float realForwardSpeed = Vector2.Dot(rb.linearVelocity, transform.up);
 
         if (Mathf.Abs(properties.currentThrottleSpeed) > Mathf.Abs(realForwardSpeed))
