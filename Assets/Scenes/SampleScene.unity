@@ -136,15 +136,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2049872de0e2134faa93df2a63ad797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProperties
-  _maxThrottleSpeed: 7
-  _acceleration: 0.5
-  _throttleDrag: 0.5
-  _maxTurnSpeed: 2.5
-  _turnAcceleration: 0.3
+  _maxThrottleSpeed: 7.5
+  _acceleration: 0.25
+  _throttleDrag: 0.05
+  _maxTurnSpeed: 3.5
+  _turnAcceleration: 1
   _velocityDissipation: 0.1
-  _rotationDissipation: 0.3
+  _rotationDissipation: 0.5
   _hasGravity: 0
-  _gravity: 20
+  _gravity: 7.5
   movementInput: {x: 0, y: 0}
   currentThrottleSpeed: 0
   currentTurnSpeed: 0
