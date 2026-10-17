@@ -12,9 +12,9 @@ public class ThrottleEffect : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_renderer.enabled != _playerProperties.isThrottling)
+        if(_renderer.enabled != _playerProperties.IsThrottling)
         {
-            _renderer.enabled = _playerProperties.isThrottling;
+            _renderer.enabled = _playerProperties.IsThrottling;
         }
     }
 }

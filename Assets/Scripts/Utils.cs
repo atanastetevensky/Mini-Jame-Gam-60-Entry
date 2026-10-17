@@ -6,7 +6,7 @@ public static class Utils
     {
         private float startTime;
         private float targetSeconds;
-        Timer(float seconds)
+        public Timer(float seconds)
         {
             startTime = UnityEngine.Time.time;
             targetSeconds = seconds;

@@ -37,9 +37,10 @@ public class PlayerProperties : MonoBehaviour
     public float currentTurnSpeed = 0f;
     public Vector2 currentThrottleDirection;
     public float SteerInput => movementInput.x;
-    public bool isThrottling => movementInput.y == 1;
+    public bool IsThrottling => movementInput.y == 1;
+    public bool HasFuel => currentFuel > 0;
 
     [Space(5)]
-    public float currentFuel;
-    public float currentPoints;
+    public float currentFuel = 0;
+    public float currentPoints = 0;
 }

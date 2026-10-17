@@ -8,14 +8,17 @@ public class Player : MonoBehaviour
     private GravityEffect gravity;
     private Rigidbody2D rb;
 
+    private void Awake()
+    {
+        properties = GetComponent<PlayerProperties>();
+        gravity = GetComponent<GravityEffect>();
+        rb = GetComponent<Rigidbody2D>();
+        properties.currentPoints = properties.StartingPoints;
+        properties.currentFuel = properties.MaxFuel;
+    }
 
     void Start()
     {
-        properties = GetComponent<PlayerProperties>();
-        properties.currentPoints = properties.StartingPoints;
-        properties.currentFuel = properties.MaxFuel;
-        gravity = GetComponent<GravityEffect>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -27,7 +30,7 @@ public class Player : MonoBehaviour
     {
         /*Since throttleDrag (affecting how fast throttle can change your trajectory) and velocityDissipation (affecting velocity loss when stopped) are directly timed,
          we're switching between the 2 for better control.*/
-        rb.linearDamping = properties.isThrottling ? properties.ThrottleDrag : properties.VelocityDissipation;
+        rb.linearDamping = properties.IsThrottling ? properties.ThrottleDrag : properties.VelocityDissipation;
 
         //Throttle is very different within orbit. Horizontal Throttle needs to be decreased to allow gravity to have proper effect, while vertical throttle needs to be increased to counter gravity properly.
         float currentOrbitThrottleMultiplier = 1f;
@@ -39,7 +42,7 @@ public class Player : MonoBehaviour
             currentOrbitThrottleMultiplier += multiplierDifference * Mathf.Abs(currentOrbitFacing);
         }
         //Handles throttling behaviour
-        if(properties.isThrottling)
+        if(properties.IsThrottling)
         {
             properties.currentThrottleDirection = Quaternion.Euler(0f, 0f, rb.rotation) * Vector2.up;
 
