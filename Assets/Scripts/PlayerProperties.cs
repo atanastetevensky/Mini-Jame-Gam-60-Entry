@@ -18,10 +18,6 @@ public class PlayerProperties : MonoBehaviour
     public float VelocityDissipation => _velocityDissipation;
     [SerializeField] private float _rotationDissipation;
     public float RotationDissipation => _rotationDissipation;
-    [SerializeField] private bool _hasGravity;
-    public bool HasGravity => _hasGravity;
-    [SerializeField] private float _gravity;
-    public float Gravity => _gravity;
 
     [Header("READ ONLY")]
     [Space(5)]
