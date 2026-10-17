@@ -29,7 +29,7 @@ public class CameraFollow : MonoBehaviour
         {
             targetPosition = _gravityEffect.currentPlanet.transform.position;
             Vector2 playerDirection = ((Vector2)_player.transform.position - targetPosition).normalized;
-            currentOffset = _planetOffset * playerDirection;
+            currentOffset = (_planetOffset + _gravityEffect.currentPlanet.planetRadius) * playerDirection;
             currentOffset.z = -10f;
 
             currentLag = 0f;
