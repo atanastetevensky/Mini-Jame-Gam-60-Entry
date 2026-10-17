@@ -82120,6 +82120,14 @@ PrefabInstance:
       propertyPath: _rotationDissipation
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1689779087576568137, guid: b13c6de78ebb0764482bcb1f72b5ed9e, type: 3}
+      propertyPath: _orbitVerticalThrottleMultiplier
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689779087576568137, guid: b13c6de78ebb0764482bcb1f72b5ed9e, type: 3}
+      propertyPath: _orbitHorizontalThrottleMultiplier
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2280175602233347012, guid: b13c6de78ebb0764482bcb1f72b5ed9e, type: 3}
       propertyPath: m_Name
       value: Player
