@@ -47,5 +47,8 @@ TagManager:
   - name: Atmosphere
     uniqueID: 2211860363
     locked: 0
+  - name: Player
+    uniqueID: 1053543911
+    locked: 0
   m_RenderingLayers:
   - Default

@@ -4,9 +4,13 @@ public class GravityEffect : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float orbitDelta { get; private set; }
+    public Vector2 currentGravity { get; private set; }
+    [SerializeField] private bool _applyGravity;
+    [SerializeField] private bool _applyRotation;
     public Planet currentPlanet;
-    public float initialDirectionToObject;
     public bool isInOrbit => currentPlanet != null;
+
+    private float initialDirectionToObject;
 
     void Awake()
     {
@@ -21,6 +25,7 @@ public class GravityEffect : MonoBehaviour
         {
             currentPlanet = null;
             orbitDelta = 0f;
+            currentGravity = Vector2.zero;
         }
     }
 
@@ -36,6 +41,11 @@ public class GravityEffect : MonoBehaviour
         orbitDelta = Mathf.DeltaAngle(initialDirectionToObject, currentDirectionToObject);
         initialDirectionToObject = currentDirectionToObject;
 
+        if(_applyRotation)
+        {
+            rb.MoveRotation(rb.rotation + orbitDelta);
+        }
+
         float distanceToCenter = Vector2.Distance(planet.transform.position, transform.position);
 
         Vector2 gravityDirection = (planet.transform.position - transform.position).normalized;
@@ -44,11 +54,14 @@ public class GravityEffect : MonoBehaviour
 
         float gravityMultiplier = Mathf.Clamp01(planet.GravityCurve.Evaluate(1f - (distanceToSurface / planet.GravityThreshold)));
 
-        float currentGravity = planet.MaxGravity * gravityMultiplier;
+        float currentGravityForce = planet.MaxGravity * gravityMultiplier;
 
-        rb.AddForce(gravityDirection * currentGravity);
+        currentGravity = gravityDirection * currentGravityForce;
 
-        Debug.Log($"gravity direction: {gravityDirection}, current gravity: {currentGravity}");
+        if (_applyGravity)
+        {
+            rb.AddForce(gravityDirection * currentGravityForce);
+        }
     }
 
 

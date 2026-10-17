@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerProperties : MonoBehaviour
@@ -18,6 +19,16 @@ public class PlayerProperties : MonoBehaviour
     public float VelocityDissipation => _velocityDissipation;
     [SerializeField] private float _rotationDissipation;
     public float RotationDissipation => _rotationDissipation;
+    [SerializeField] private float _orbitVerticalThrottleMultiplier;
+    public float OrbitVerticalThrottleMultiplier => _orbitVerticalThrottleMultiplier;
+    [SerializeField] private float _orbitHorizontalThrottleMultiplier;
+    public float OrbitHorizontalThrottleMultiplier => _orbitHorizontalThrottleMultiplier;
+    [SerializeField] private float _maxFuel;
+    public float MaxFuel => _maxFuel;
+    [SerializeField] private float _fuelConsumptionRate;
+    public float FuelConsumptionRate => _fuelConsumptionRate;
+    [SerializeField] private float _startingPoints;
+    public float StartingPoints => _startingPoints;
 
     [Header("READ ONLY")]
     [Space(5)]
@@ -28,4 +39,7 @@ public class PlayerProperties : MonoBehaviour
     public float SteerInput => movementInput.x;
     public bool isThrottling => movementInput.y == 1;
 
+    [Space(5)]
+    public float currentFuel;
+    public float currentPoints;
 }

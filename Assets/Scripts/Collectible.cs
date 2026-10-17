@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject _storageEntryPrefab;
+    
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Inventory playerInventory = collision.GetComponent<Inventory>();
+        if (playerInventory == null) return;
+
+        if(playerInventory.AddEntry(_storageEntryPrefab))
+        {
+            GameObject.Destroy(this.gameObject);
+        }
     }
 }

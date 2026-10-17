@@ -18,6 +18,7 @@ public class Planet : MonoBehaviour
     private CircleCollider2D _circleColl;
     private ContactFilter2D _filter;
     private readonly List<Collider2D> _colliders = new List<Collider2D>();
+    private readonly HashSet<GravityEffect> _affectedSet = new HashSet<GravityEffect>();
 
     void Start()
     {
@@ -34,13 +35,16 @@ public class Planet : MonoBehaviour
         Physics2D.OverlapCircle(transform.position, gravityRadius, _filter, _colliders);
 
         
-
+        _affectedSet.Clear();
         foreach (Collider2D currentColl in _colliders)
         {
 
             GravityEffect affectedObject = currentColl.GetComponent<GravityEffect>();
             if (affectedObject == null) continue;
-            affectedObject.GravityPull(this);
+            if(_affectedSet.Add(affectedObject))
+            {
+                affectedObject.GravityPull(this);
+            }
         }
     }
 
@@ -57,5 +61,12 @@ public class Planet : MonoBehaviour
         Vector2 vectorToObject = (target.transform.position - transform.position).normalized;
         float initialDirectionToObject = Mathf.Atan2(vectorToObject.y, vectorToObject.x) * Mathf.Rad2Deg;
         return initialDirectionToObject;
+    }
+
+    public float RotationDifference(GravityEffect target)
+    {
+        float directionToTarget = DegreesToObject(target);
+        Rigidbody2D targetRb = target.GetComponent<Rigidbody2D>();
+        return Mathf.Abs(Mathf.DeltaAngle(targetRb.rotation + 90, directionToTarget));
     }
 }

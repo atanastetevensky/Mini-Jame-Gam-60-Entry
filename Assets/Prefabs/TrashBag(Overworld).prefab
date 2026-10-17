@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1609774054703934551}
   - component: {fileID: 2194172405562693178}
   - component: {fileID: 6339187198741543319}
+  - component: {fileID: 1336596971418181001}
   m_Layer: 0
-  m_Name: TrashBag
+  m_Name: TrashBag(Overworld)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dacb43da61d4ca843ab71bdfdb0eef12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Collectible
+  _storageEntryPrefab: {fileID: 6077354806225374050, guid: dae2eee71d47c6d408bf123e2d5b7808, type: 3}
 --- !u!212 &2194172405562693178
 SpriteRenderer:
   serializedVersion: 2
@@ -135,7 +137,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -151,3 +153,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0891113, y: 1.1610165}
   m_EdgeRadius: 0
+--- !u!50 &1336596971418181001
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412171022258032788}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
