@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000a1cc0ce28b4fd683e7cdcb3e
+  m_ApplyToSortingLayers: 00000000a1cc0ce28b4fd683e7cdcb3eab5760ae
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -82055,6 +82055,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1538845085303914616, guid: e83620ea2280bea4d828f104e597bbcc, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538845085303914616, guid: e83620ea2280bea4d828f104e597bbcc, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1369417813
+      objectReference: {fileID: 0}
     - target: {fileID: 4155167659060958187, guid: e83620ea2280bea4d828f104e597bbcc, type: 3}
       propertyPath: m_Name
       value: Planet

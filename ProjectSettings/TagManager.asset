@@ -50,5 +50,8 @@ TagManager:
   - name: Player
     uniqueID: 1053543911
     locked: 0
+  - name: Planet
+    uniqueID: 2925549483
+    locked: 0
   m_RenderingLayers:
   - Default
