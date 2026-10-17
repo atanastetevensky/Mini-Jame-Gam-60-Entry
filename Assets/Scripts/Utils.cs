@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public static class Utils
@@ -20,6 +21,29 @@ public static class Utils
         return nearestVector;
     }
 
+    public static GameObject Nearest(Vector2 target, GameObject[] objectArray)
+    {
+        GameObject nearestObject = objectArray[0];
+        foreach (GameObject currentObject in objectArray)
+        {
+            float nearestDistance = Vector2.Distance(nearestObject.transform.position, target);
+            float currentDistance = Vector2.Distance(currentObject.transform.position, target);
+            nearestObject = currentDistance < nearestDistance ? currentObject : nearestObject;
+        }
+        return nearestObject;
+    }
+
+    public static T Nearest<T>(Vector2 target, T[] componentArray) where T : Component
+    {
+        T nearestObject = componentArray[0];
+        foreach (T currentObject in componentArray)
+        {
+            float nearestDistance = Vector2.Distance(nearestObject.transform.position, target);
+            float currentDistance = Vector2.Distance(currentObject.transform.position, target);
+            nearestObject = currentDistance < nearestDistance ? currentObject : nearestObject;
+        }
+        return nearestObject;
+    }
     public class Timer
     {
         private float startTime;
