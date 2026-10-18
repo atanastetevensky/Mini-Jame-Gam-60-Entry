@@ -10,6 +10,7 @@ public class PlayerHealthManager : MonoBehaviour
     private PlayerProperties _properties;
     private Animator _animator;
     private Animator _explosionAnimator;
+    private GameObject _explosionObject;
 
     private void Awake()
     {
@@ -28,6 +29,8 @@ public class PlayerHealthManager : MonoBehaviour
         _explosionAnimator = null;
 
         GameObject outofShipInstance = Instantiate(_outOfShipPrefab, transform.position, Quaternion.identity, null);
+        _explosionObject.transform.parent = outofShipInstance.transform;
+        _explosionObject.transform.localPosition = Vector2.zero;
         Rigidbody2D outOfShipRb = outofShipInstance.GetComponent<Rigidbody2D>();
         outOfShipRb.linearVelocity = _rb.linearVelocity;
         outOfShipRb.angularVelocity = _rb.angularVelocity;
@@ -61,8 +64,8 @@ public class PlayerHealthManager : MonoBehaviour
 
     private void CrashDeath()
     {
-        GameObject explosionInstance = Instantiate(_explosionObjectPrefab, transform.position, Quaternion.identity, transform);
-        _explosionAnimator = explosionInstance.GetComponent<Animator>();
+        _explosionObject = Instantiate(_explosionObjectPrefab, transform.position, Quaternion.identity, transform);
+        _explosionAnimator = _explosionObject.GetComponent<Animator>();
     }
 
     private void OutOfFuelDeath()
