@@ -99,13 +99,13 @@ MonoBehaviour:
   _throttleDrag: 1
   _maxTurnSpeed: 150
   _turnAcceleration: 20
-  _velocityDissipation: 1
+  _velocityDissipation: 0.3
   _rotationDissipation: 2
   _orbitVerticalThrottleMultiplier: 1.4
   _orbitHorizontalThrottleMultiplier: 0.8
   _maxHealth: 30
   _crashSpeedThreshold: 10
-  _maxFuel: 1000
+  _maxFuel: 5000
   _fuelConsumptionRate: 0.01
   _startingPoints: 0
   movementInput: {x: 0, y: 0}

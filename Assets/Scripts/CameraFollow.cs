@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float _lagTime;
     [SerializeField] private float _planetRotateSpeed;
     [SerializeField] private float _mainMenuProjectionSize;
-    [SerializeField] private Vector2 _mainMenuOffset;
+    [SerializeField] private Vector3 _mainMenuOffset;
     [SerializeField] private float _menuOffsetReturnSpeed;
     [SerializeField] private float _menuOffsetReturnAcceleration;
     [SerializeField] private float _menuZoomOutMaxSpeed;
@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour
 
     private GravityEffect _gravityEffect;
     private Camera _camera;
-    private Vector2 _currentMainMenuOffset;
+    private Vector3 _currentMainMenuOffset;
     private float _currentMenuOffsetReturnSpeed = 0f;
     private float _currentMenuZoomOutSpeed = 0f;
 
@@ -50,7 +50,7 @@ public class CameraFollow : MonoBehaviour
             _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, currentProjectionSize, _currentMenuZoomOutSpeed);
         }
 
-        Vector2 targetPosition = _player.position;
+        Vector3 targetPosition = _player.position;
         Vector3 currentOffset = _offset;
         float currentLag = _lagTime;
         Quaternion targetRotation = Quaternion.identity;
@@ -58,7 +58,7 @@ public class CameraFollow : MonoBehaviour
         if (_gravityEffect.isInOrbit)
         {
             targetPosition = _gravityEffect.currentPlanet.transform.position;
-            Vector2 playerDirection = ((Vector2)_player.transform.position - targetPosition).normalized;
+            Vector2 playerDirection = (_player.transform.position - targetPosition).normalized;
             currentOffset = (_planetOffset + _gravityEffect.currentPlanet.planetRadius) * playerDirection;
             currentOffset.z = -10f;
 

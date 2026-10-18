@@ -6,20 +6,13 @@ public class FadeEffect : MonoBehaviour
     [SerializeField] private AnimationCurve _fadeCurve;
     [SerializeField] private float _fadeTime;
     [SerializeField] private bool _fadeIn;
+    [SerializeField] private float _currentFade;
+    [SerializeField] private bool _currentCompleted;
 
     private TextMeshProUGUI _textMesh;
     private Utils.Timer _timer;
 
-    public bool Completed => _timer.HasPassed();
-
-    private void Awake()
-    {
-        _textMesh = GetComponent<TextMeshProUGUI>();
-        if (_fadeIn)
-        {
-            _textMesh.alpha = 0f;
-        }
-    }
+    public bool Completed => _timer != null && _timer.HasPassed();
 
     private void OnEnable()
     {
@@ -33,7 +26,6 @@ public class FadeEffect : MonoBehaviour
     private void Update()
     {
         if (_timer == null) return;
-
         if(_timer.HasPassed())
         {
             _textMesh.alpha = _fadeIn ? 1f : 0f;
@@ -41,7 +33,7 @@ public class FadeEffect : MonoBehaviour
             return;
         }
         float currentValue = _fadeCurve.Evaluate(_timer.passedValue());
-
+        _currentFade = currentValue;
         _textMesh.alpha = _fadeIn ? currentValue : 1f - currentValue;
     }
 

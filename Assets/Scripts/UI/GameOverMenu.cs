@@ -11,20 +11,25 @@ public class GameOverMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        _buttonEnableTimer = new Utils.Timer(_buttonEnableDelay);
+        //_buttonEnableTimer = new Utils.Timer(_buttonEnableDelay);
+        foreach (GameObject button in _buttons)
+        {
+            button.transform.parent.gameObject.SetActive(true);
+        }
         _header.SetActive(true);
         _header.GetComponent<FadeEffect>().TriggerFade();
     }
 
     private void Update()
     {
-        if (!_buttonEnableTimer.HasPassed()) return;
-        if (_buttons[0].activeSelf) return;
-        foreach (GameObject button in _buttons)
-        {
-            button.SetActive(true);
-            button.GetComponent<FadeEffect>().TriggerFade();
-        }
+        //if (!_buttonEnableTimer.HasPassed()) return;
+        //foreach (GameObject button in _buttons)
+        //{
+        //    Debug.Log("Hello");
+        //    if (button.GetComponent<FadeEffect>().Completed) break;
+        //    Debug.Log("Hi");
+        //    button.GetComponent<FadeEffect>().TriggerFade();
+        //}
     }
 
     public void OnRetry()
