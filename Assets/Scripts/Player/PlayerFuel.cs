@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerFuel : MonoBehaviour
 {
 
-    private Player _player;
+    private PlayerMovement _player;
     private PlayerProperties _playerProperties;
     private GravityEffect _gravityEffect;
     private Utils.Timer _timer;
 
     void Start()
     {
-        _player = GetComponent<Player>();
+        _player = GetComponent<PlayerMovement>();
         _playerProperties = GetComponent<PlayerProperties>();
         _gravityEffect = GetComponent<GravityEffect>();
     }

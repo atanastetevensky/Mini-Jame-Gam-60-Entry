@@ -44,6 +44,14 @@ public static class Utils
         }
         return nearestObject;
     }
+
+    public static float GetDirection(Vector2 originPosition, Vector2 targetPosition)
+    {
+        Vector2 direction = targetPosition - originPosition;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        return angle;
+    }
+
     public class Timer
     {
         private float startTime;

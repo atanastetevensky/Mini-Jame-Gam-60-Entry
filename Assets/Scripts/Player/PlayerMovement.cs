@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public PlayerProperties properties { get; private set; }
 
@@ -17,15 +17,6 @@ public class Player : MonoBehaviour
         properties.currentFuel = properties.MaxFuel;
     }
 
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         /*Since throttleDrag (affecting how fast throttle can change your trajectory) and velocityDissipation (affecting velocity loss when stopped) are directly timed,
@@ -34,7 +25,7 @@ public class Player : MonoBehaviour
 
         //Throttle is very different within orbit. Horizontal Throttle needs to be decreased to allow gravity to have proper effect, while vertical throttle needs to be increased to counter gravity properly.
         float currentOrbitThrottleMultiplier = 1f;
-        if(gravity.isInOrbit)
+        if (gravity.isInOrbit)
         {
             float currentOrbitFacing = Mathf.Cos(gravity.currentPlanet.RotationDifference(gravity) * Mathf.Deg2Rad);
             float multiplierDifference = Mathf.Abs(properties.OrbitVerticalThrottleMultiplier - properties.OrbitHorizontalThrottleMultiplier);
@@ -42,16 +33,17 @@ public class Player : MonoBehaviour
             currentOrbitThrottleMultiplier += multiplierDifference * Mathf.Abs(currentOrbitFacing);
         }
         //Handles throttling behaviour
-        if(properties.IsThrottling)
+        if (properties.IsThrottling)
         {
             properties.currentThrottleDirection = Quaternion.Euler(0f, 0f, rb.rotation) * Vector2.up;
 
             rb.AddForce(properties.currentThrottleDirection * properties.Acceleration * currentOrbitThrottleMultiplier + gravity.currentGravity);
-        } else
+        }
+        else
         {
             rb.AddForce(gravity.currentGravity);
         }
-            rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, properties.MaxThrottleSpeed);
+        rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, properties.MaxThrottleSpeed);
 
         //Handles turn behaviour
         properties.currentTurnSpeed += properties.TurnAcceleration * properties.SteerInput;
@@ -59,7 +51,7 @@ public class Player : MonoBehaviour
         float targetRotation = rb.rotation - properties.currentTurnSpeed;
         rb.MoveRotation(targetRotation + gravity.orbitDelta);
 
-        if(properties.SteerInput == 0)
+        if (properties.SteerInput == 0)
         {
             properties.currentTurnSpeed = Mathf.MoveTowards(properties.currentTurnSpeed, 0f, properties.RotationDissipation);
         }

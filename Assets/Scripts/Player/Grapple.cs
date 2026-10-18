@@ -1,22 +1,22 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Grapple : MonoBehaviour
 {
     [SerializeField] private float _range;
     [SerializeField] private float _speed;
+    [SerializeField] private Vector2 _spawnOffset;
+    [SerializeField] private GameObject _grappleHookPrefab;
 
     public float Range => _range;
     public float speed => _speed;
 
+    private Collider2D nearestCollider;
+
     private void FixedUpdate()
     {
-        Collider2D nearest = GetNearestComponent();
-        if (nearest == null) return;
-
-        Vector2 targetPosition = nearest.transform.position;
-
-
+        nearestCollider = GetNearestComponent();
     }
 
     private void OnDrawGizmos()
@@ -37,6 +37,14 @@ public class Grapple : MonoBehaviour
 
         if (collectiblesWithinRange.Length == 0) return null;
 
-        return Utils.Nearest(transform.position, allWithinRange);
+        return Utils.Nearest(transform.position, collectiblesWithinRange);
+    }
+
+    void OnGrapple(InputValue inputValue)
+    {
+        if (nearestCollider == null) return;
+
+        GameObject hookInstance = GameObject.Instantiate(_grappleHookPrefab, (Vector2)transform.position + _spawnOffset, Quaternion.identity, this.transform);
+        hookInstance.GetComponent<GrapplingHook>().targetObject = nearestCollider.gameObject;
     }
 }

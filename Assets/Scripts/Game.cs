@@ -3,8 +3,8 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     public static Game Instance;
-    [SerializeField] private Player _player;
-    public Player GetPlayer => _player;
+    [SerializeField] private PlayerMovement _player;
+    public PlayerMovement GetPlayer => _player;
 
     private void Awake()
     {

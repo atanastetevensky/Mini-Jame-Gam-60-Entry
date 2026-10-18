@@ -5,9 +5,9 @@ public class Inventory : MonoBehaviour
 {
     private List<StorageEntry> _inventoryList = new List<StorageEntry>();
 
-    public bool AddEntry(GameObject entryPrefab)
+    public bool AddCollectible(Collectible collectible)
     {
-        StorageEntry entry = Instantiate(entryPrefab).GetComponent<StorageEntry>();
+        StorageEntry entry = Instantiate(collectible.StorageEntryPrefab).GetComponent<StorageEntry>();
         _inventoryList.Add(entry);
         return true;
     }

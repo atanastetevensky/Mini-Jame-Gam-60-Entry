@@ -4,7 +4,7 @@ public class TrashStation : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.GetComponent<Player>();
+        PlayerMovement player = collision.GetComponent<PlayerMovement>();
         Inventory inventory = player.GetComponent<Inventory>();
 
         float totalPoints = inventory.GetTotalPoints();
