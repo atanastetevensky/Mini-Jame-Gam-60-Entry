@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6100bfc886c22740872d6075d14dbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GravityEffect
-  _applyGravity: 1
-  _applyRotation: 1
   _massUnderGravity: 1
+  applyGravity: 1
+  applyRotation: 0
   currentPlanet: {fileID: 0}
