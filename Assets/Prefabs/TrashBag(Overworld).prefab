@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 124564848280685259}
+  - component: {fileID: 8726789028680727755}
   - component: {fileID: 1609774054703934551}
   - component: {fileID: 8032823017280554300}
   - component: {fileID: 2194172405562693178}
   - component: {fileID: 1336596971418181001}
   - component: {fileID: 2542257186631451982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrashBag(Overworld)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +37,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8726789028680727755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412171022258032788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6100bfc886c22740872d6075d14dbef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GravityEffect
+  _applyGravity: 1
+  _applyRotation: 1
+  _massUnderGravity: 1
+  currentPlanet: {fileID: 0}
 --- !u!114 &1609774054703934551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,12 +128,12 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 002367fb789c58c46a8cf4a95898443c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c89d8b8f2f8a614c9da4d160b9edbe9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

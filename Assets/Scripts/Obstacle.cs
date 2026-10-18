@@ -20,7 +20,7 @@ public class Obstacle : MonoBehaviour
 
         if (playerHealth == null) return;
 
-        playerHealth.TakeDamage(_damageValue);
+        playerHealth.TakeDamage(_damageValue, PlayerHealthManager.DeathCause.Crash);
 
         Vector2 pushbackDirection = -contactPoint.normal;
         Vector2 pushbackForce = pushbackDirection * _pushbackValue;

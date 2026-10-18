@@ -52,10 +52,21 @@ public static class Utils
         return angle;
     }
 
+    //public static int getCurrentFrameIndex(Animator animator)
+    //{
+    //    AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+    //    AnimatorClipInfo[] clips = animator.GetCurrentAnimatorClipInfo(0);
+
+    //    AnimationClip clip = clips[]
+    //}
+
     public class Timer
     {
         private float startTime;
         private float targetSeconds;
+
+        private float Difference => UnityEngine.Time.time - startTime;
+
         public Timer(float seconds)
         {
             startTime = UnityEngine.Time.time;
@@ -64,8 +75,12 @@ public static class Utils
 
         public bool HasPassed()
         {
-            float difference = UnityEngine.Time.time - startTime;
-            return difference > targetSeconds;
+            return Difference > targetSeconds;
+        }
+
+        public float passedValue()
+        {
+            return Mathf.Clamp01(Difference / targetSeconds);
         }
     }
 }

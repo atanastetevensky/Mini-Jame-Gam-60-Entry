@@ -7,25 +7,32 @@ public class GravityEffect : MonoBehaviour
     public Vector2 currentGravity { get; private set; }
     [SerializeField] private bool _applyGravity;
     [SerializeField] private bool _applyRotation;
+    [SerializeField] private float _massUnderGravity;
     public Planet currentPlanet;
     public bool isInOrbit => currentPlanet != null;
 
     private float initialDirectionToObject;
+    private float _defaultMass;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        _defaultMass = rb.mass;
     }
 
     private void Update()
     {
         if (!isInOrbit) return;
+
+        rb.mass = _massUnderGravity;
+
         float distanceToPlanet = Vector2.Distance(currentPlanet.transform.position, transform.position);
         if (distanceToPlanet > currentPlanet.gravityRadius)
         {
             currentPlanet = null;
             orbitDelta = 0f;
             currentGravity = Vector2.zero;
+            rb.mass = _defaultMass;
         }
     }
 
