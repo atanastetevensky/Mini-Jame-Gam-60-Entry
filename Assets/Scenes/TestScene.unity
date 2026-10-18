@@ -137,9 +137,129 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 668718692732084780, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _lagTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 668718692732084780, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _mainMenuOffset.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 668718692732084780, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _mainMenuOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668718692732084780, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _menuZoomOutSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 668718692732084780, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _menuZoomOutMaxSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 668718692732084780, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _menuOffsetReturnSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 668718692732084780, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _mainMenuProjectionSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 668718692732084780, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _menuZoomOutAcceleration
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 668718692732084780, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _menuOffsetReturnAcceleration
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 992927137820081237, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 992927137820081237, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 992927137820081237, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 992927137820081237, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 992927137820081237, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1425934586170037898, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
       propertyPath: m_Name
       value: Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345897948036641922, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356440202150966368, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 781431547}
+    - target: {fileID: 2356440202150966368, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnQuit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356440202150966368, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695795035298575101, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: orthographic size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898158237843640012, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 781431547}
+    - target: {fileID: 6898158237843640012, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898158237843640012, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013447134001042656, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 781431547}
+    - target: {fileID: 8013447134001042656, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnQuit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013447134001042656, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333965914585892340, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333965914585892340, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333965914585892340, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333965914585892340, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333965914585892340, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      propertyPath: _fadeCurve.m_Curve.Array.data[1].outSlope
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8683112520587098809, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -740,7 +860,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3624651258188420115, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 781431547}
+    - targetCorrespondingSourceObject: {fileID: 4122667815703976318, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1239683564}
   m_SourcePrefab: {fileID: 100100000, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
 --- !u!1001 &194082790
 PrefabInstance:
@@ -970,6 +1096,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a5fc770f7f747049a57735077a56175, type: 3}
+--- !u!1 &781431542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3624651258188420115, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+  m_PrefabInstance: {fileID: 83401923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &781431547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781431542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23ae0375c491684681ee91c5c6c9d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
+  _titleEffect: {fileID: 1239683564}
+  _buttonsEffect:
+  - {fileID: 1324468451}
+  - {fileID: 2023589857}
+  _ingameUI: {fileID: 1741681621}
 --- !u!1001 &829452416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1027,6 +1175,49 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a5fc770f7f747049a57735077a56175, type: 3}
+--- !u!1 &1239683560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4122667815703976318, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+  m_PrefabInstance: {fileID: 83401923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1239683564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239683560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cc0780613c00b47b105423ff7d5bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeImageEffect
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _fadeTime: 1.5
+  _fadeIn: 0
 --- !u!1001 &1305434812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1084,6 +1275,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a5fc770f7f747049a57735077a56175, type: 3}
+--- !u!114 &1324468451 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 992927137820081237, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+  m_PrefabInstance: {fileID: 83401923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc702467d5aaa8f4fb97f3c4d3424c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeEffect
 --- !u!1001 &1410204882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1334,6 +1536,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a5fc770f7f747049a57735077a56175, type: 3}
+--- !u!1 &1741681621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5820351828940115677, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+  m_PrefabInstance: {fileID: 83401923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1879630543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1391,6 +1598,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a5fc770f7f747049a57735077a56175, type: 3}
+--- !u!114 &2023589857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8333965914585892340, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
+  m_PrefabInstance: {fileID: 83401923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc702467d5aaa8f4fb97f3c4d3424c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeEffect
 --- !u!1001 &3876091275031104458
 PrefabInstance:
   m_ObjectHideFlags: 0

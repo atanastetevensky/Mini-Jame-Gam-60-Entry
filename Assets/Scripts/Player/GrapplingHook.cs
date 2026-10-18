@@ -30,8 +30,8 @@ public class GrapplingHook : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _playerGrapple = Game.Instance.GetPlayer.GetComponent<Grapple>();
-        _inventory = Game.Instance.GetPlayer.GetComponent<Inventory>();
+        _playerGrapple = Game.Instance.Player.GetComponent<Grapple>();
+        _inventory = Game.Instance.Player.GetComponent<Inventory>();
         _chainRenderer = _chainPrefab.GetComponent<SpriteRenderer>();
     }
 

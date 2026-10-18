@@ -67,4 +67,15 @@ public class PlayerMovement : MonoBehaviour
     {
         _properties.movementInput = value.Get<Vector2>();
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (Game.Instance.gameOver) return;
+        float impactSpeed = collision.relativeVelocity.magnitude;
+        if(impactSpeed > _properties.CrashSpeedThreshold)
+        {
+            PlayerHealthManager playerHealth = GetComponent<PlayerHealthManager>();
+            playerHealth.Death(PlayerHealthManager.DeathCause.Crash);
+        }
+    }
 }

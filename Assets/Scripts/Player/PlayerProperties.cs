@@ -25,6 +25,8 @@ public class PlayerProperties : MonoBehaviour
     public float OrbitHorizontalThrottleMultiplier => _orbitHorizontalThrottleMultiplier;
     [SerializeField] private float _maxHealth;
     public float MaxHealth => _maxHealth;
+    [SerializeField] private float _crashSpeedThreshold;
+    public float CrashSpeedThreshold => _crashSpeedThreshold;
     [SerializeField] private float _maxFuel;
     public float MaxFuel => _maxFuel;
     [SerializeField] private float _fuelConsumptionRate;

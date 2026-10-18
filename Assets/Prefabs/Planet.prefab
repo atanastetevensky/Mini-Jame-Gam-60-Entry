@@ -83,7 +83,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _layerMask:
     serializedVersion: 2
-    m_Bits: 328
+    m_Bits: 4294967295
 --- !u!212 &1538845085303914616
 SpriteRenderer:
   serializedVersion: 2

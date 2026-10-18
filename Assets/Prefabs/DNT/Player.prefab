@@ -104,6 +104,7 @@ MonoBehaviour:
   _orbitVerticalThrottleMultiplier: 1.4
   _orbitHorizontalThrottleMultiplier: 0.8
   _maxHealth: 30
+  _crashSpeedThreshold: 10
   _maxFuel: 1000
   _fuelConsumptionRate: 0.01
   _startingPoints: 0
@@ -257,7 +258,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1053543911
   m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 7413c40f8652a8e42b1a1447ad6831b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

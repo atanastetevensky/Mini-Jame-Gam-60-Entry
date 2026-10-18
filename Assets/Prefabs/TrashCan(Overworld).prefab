@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 124564848280685259}
   - component: {fileID: 1609774054703934551}
+  - component: {fileID: 2518828037965640891}
   - component: {fileID: 2194172405562693178}
   - component: {fileID: 1336596971418181001}
   - component: {fileID: 2542257186631451982}
-  - component: {fileID: 2518828037965640891}
   m_Layer: 8
   m_Name: TrashCan(Overworld)
   m_TagString: Untagged
@@ -49,6 +49,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Collectible
   _storageEntryPrefab: {fileID: 6077354806225374050, guid: 8f8e4a480eb3e4d498e04ddaa96d567f, type: 3}
+--- !u!114 &2518828037965640891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412171022258032788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6100bfc886c22740872d6075d14dbef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GravityEffect
+  _massUnderGravity: 1
+  applyGravity: 1
+  applyRotation: 0
+  currentPlanet: {fileID: 0}
 --- !u!212 &2194172405562693178
 SpriteRenderer:
   serializedVersion: 2
@@ -171,19 +187,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.1279068}
   m_Radius: 0.3533249
---- !u!114 &2518828037965640891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412171022258032788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6100bfc886c22740872d6075d14dbef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GravityEffect
-  _massUnderGravity: 1
-  applyGravity: 1
-  applyRotation: 0
-  currentPlanet: {fileID: 0}

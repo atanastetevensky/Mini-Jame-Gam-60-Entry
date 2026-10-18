@@ -10,7 +10,7 @@ public class FuelGauge : MonoBehaviour
 
     void Start()
     {
-        _playerProperties = Game.Instance.GetPlayer._properties;
+        _playerProperties = Game.Instance.Player._properties;
         transformOriginalPosition = _gaugeTransform.position;
     }
 

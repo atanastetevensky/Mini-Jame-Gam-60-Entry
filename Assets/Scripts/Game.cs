@@ -6,7 +6,8 @@ public class Game : MonoBehaviour
     public static Game Instance;
     [SerializeField] private PlayerMovement _player;
     [SerializeField] private GameObject _gameOverMenu;
-    public PlayerMovement GetPlayer => _player;
+    public PlayerMovement Player => _player;
+    public bool MainMenuActive = true;
     public bool gameOver = false;
 
     private void Awake()

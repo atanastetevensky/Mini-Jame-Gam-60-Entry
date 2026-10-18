@@ -13,6 +13,7 @@ public class GameOverMenu : MonoBehaviour
     {
         _buttonEnableTimer = new Utils.Timer(_buttonEnableDelay);
         _header.SetActive(true);
+        _header.GetComponent<FadeEffect>().TriggerFade();
     }
 
     private void Update()
@@ -22,6 +23,7 @@ public class GameOverMenu : MonoBehaviour
         foreach (GameObject button in _buttons)
         {
             button.SetActive(true);
+            button.GetComponent<FadeEffect>().TriggerFade();
         }
     }
 
