@@ -52,13 +52,17 @@ public static class Utils
         return angle;
     }
 
-    //public static int getCurrentFrameIndex(Animator animator)
-    //{
-    //    AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-    //    AnimatorClipInfo[] clips = animator.GetCurrentAnimatorClipInfo(0);
+    public static int getCurrentFrameIndex(Animator animator)
+    {
+        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorClipInfo[] clips = animator.GetCurrentAnimatorClipInfo(0);
 
-    //    AnimationClip clip = clips[]
-    //}
+        AnimationClip clip = clips[0].clip;
+        float progress = state.normalizedTime % 1f;
+        int totalFrames = Mathf.RoundToInt(clip.length * clip.frameRate);
+        int frameIndex = Mathf.FloorToInt(progress * totalFrames);
+        return frameIndex;
+    }
 
     public class Timer
     {

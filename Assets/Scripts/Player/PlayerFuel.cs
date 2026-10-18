@@ -18,6 +18,14 @@ public class PlayerFuel : MonoBehaviour
     void Update()
     {
         _playerProperties.currentFuel = Mathf.Clamp(_playerProperties.currentFuel, 0f, _playerProperties.MaxFuel);
+
+        if(!_playerProperties.HasFuel)
+        {
+            PlayerHealthManager playerHealth = GetComponent<PlayerHealthManager>();
+            playerHealth.Death(PlayerHealthManager.DeathCause.OutOfFuel);
+            return;
+        }
+
         if (!_playerProperties.IsThrottling)
         {
             _timer = null;

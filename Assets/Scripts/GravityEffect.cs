@@ -5,9 +5,12 @@ public class GravityEffect : MonoBehaviour
     private Rigidbody2D rb;
     public float orbitDelta { get; private set; }
     public Vector2 currentGravity { get; private set; }
-    [SerializeField] private bool _applyGravity;
-    [SerializeField] private bool _applyRotation;
+
     [SerializeField] private float _massUnderGravity;
+
+    [SerializeField] public bool applyGravity;
+    [SerializeField] public bool applyRotation;
+
     public Planet currentPlanet;
     public bool isInOrbit => currentPlanet != null;
 
@@ -48,7 +51,7 @@ public class GravityEffect : MonoBehaviour
         orbitDelta = Mathf.DeltaAngle(initialDirectionToObject, currentDirectionToObject);
         initialDirectionToObject = currentDirectionToObject;
 
-        if(_applyRotation)
+        if(applyRotation)
         {
             rb.MoveRotation(rb.rotation + orbitDelta);
         }
@@ -65,7 +68,7 @@ public class GravityEffect : MonoBehaviour
 
         currentGravity = gravityDirection * currentGravityForce;
 
-        if (_applyGravity)
+        if (applyGravity)
         {
             rb.AddForce(gravityDirection * currentGravityForce);
         }

@@ -16,6 +16,6 @@ public class RandomPrefabSpawner : MonoBehaviour
         GameObject prefab = _prefabs[randomIndex];
 
         Instantiate(prefab, transform.position, Quaternion.identity, null);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

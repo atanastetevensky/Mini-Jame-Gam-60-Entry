@@ -126,7 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91fa427af96626246ab72d66da862186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthManager
-  _explosionObjectPrefab: {fileID: 0}
+  _explosionObjectPrefab: {fileID: 7513470071226176755, guid: 7e9939002addda54d9005547e36e6ad1, type: 3}
+  _outOfShipPrefab: {fileID: 1995946083908939572, guid: 77eb305945b998f469de8a17d871dd2f, type: 3}
+  _thrustEffectInstance: {fileID: 8041967304143966947}
+  _destroyFrame: 5
 --- !u!114 &1505152582204228555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,9 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6100bfc886c22740872d6075d14dbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GravityEffect
-  _applyGravity: 0
-  _applyRotation: 0
   _massUnderGravity: 1
+  applyGravity: 0
+  applyRotation: 0
   currentPlanet: {fileID: 0}
 --- !u!212 &7609601453957965160
 SpriteRenderer:

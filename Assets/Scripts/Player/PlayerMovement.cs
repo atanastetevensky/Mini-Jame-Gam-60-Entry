@@ -44,11 +44,6 @@ public class PlayerMovement : MonoBehaviour
         }
         _rb.linearVelocity = Vector2.ClampMagnitude(_rb.linearVelocity, _properties.MaxThrottleSpeed);
 
-        //Handles turn behaviour
-        //_properties.currentTurnSpeed += _properties.TurnAcceleration * _properties.SteerInput;
-        //_properties.currentTurnSpeed = Mathf.Clamp(_properties.currentTurnSpeed, -_properties.MaxTurnSpeed, _properties.MaxTurnSpeed);
-        //float targetRotation = _rb.rotation - _properties.currentTurnSpeed;
-
         _rb.AddTorque(-_properties.TurnAcceleration * _properties.SteerInput);
         _rb.rotation += _gravity.orbitDelta;
         _rb.angularVelocity = Mathf.Clamp(_rb.angularVelocity, -_properties.MaxTurnSpeed, _properties.MaxTurnSpeed);
