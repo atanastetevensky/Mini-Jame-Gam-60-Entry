@@ -49,4 +49,15 @@ public class PlayerFuel : MonoBehaviour
         _playerProperties.currentFuel = Mathf.Max(_playerProperties.currentFuel - 1f, 0f);
         return true;
     }
+
+    public void Refuel(float fuelAmount)
+    {
+        _playerProperties.currentFuel += fuelAmount;
+        _playerProperties.currentFuel = Mathf.Min(_playerProperties.MaxFuel, _playerProperties.currentFuel);
+    }
+
+    public void FullRefuel()
+    {
+        Refuel(_playerProperties.MaxFuel);
+    }
 }
