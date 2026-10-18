@@ -16,8 +16,8 @@ public class FuelGauge : MonoBehaviour
 
     void Update()
     {
+        if(Game.Instance.gameOver) this.gameObject.SetActive(false);
         float currentFuelNormalized = _playerProperties.currentFuel / _playerProperties.MaxFuel;
-        //Debug.Log($"player _properties: {_playerProperties.currentFuel}, currentFuelNormalized: {currentFuelNormalized}");
 
         _gaugeTransform.position = transformOriginalPosition - new Vector2(0f, _gaugeBottomOffset) * (1f - currentFuelNormalized);
     }
