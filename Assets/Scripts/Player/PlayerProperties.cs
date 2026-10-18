@@ -23,6 +23,8 @@ public class PlayerProperties : MonoBehaviour
     public float OrbitVerticalThrottleMultiplier => _orbitVerticalThrottleMultiplier;
     [SerializeField] private float _orbitHorizontalThrottleMultiplier;
     public float OrbitHorizontalThrottleMultiplier => _orbitHorizontalThrottleMultiplier;
+    [SerializeField] private float _maxHealth;
+    public float MaxHealth => _maxHealth;
     [SerializeField] private float _maxFuel;
     public float MaxFuel => _maxFuel;
     [SerializeField] private float _fuelConsumptionRate;
@@ -41,6 +43,7 @@ public class PlayerProperties : MonoBehaviour
     public bool HasFuel => currentFuel > 0;
 
     [Space(5)]
+    public float currentHealth;
     public float currentFuel = 0;
     public float currentPoints = 0;
 }

@@ -10,6 +10,6 @@ public class TrashStation : MonoBehaviour
         float totalPoints = inventory.GetTotalPoints();
         inventory.EmptyInventory();
 
-        player.properties.currentPoints += totalPoints;
+        player._properties.currentPoints += totalPoints;
     }
 }

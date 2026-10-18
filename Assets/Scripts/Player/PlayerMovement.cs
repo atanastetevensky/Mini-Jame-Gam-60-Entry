@@ -3,62 +3,73 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerProperties properties { get; private set; }
+    public PlayerProperties _properties { get; private set; }
 
-    private GravityEffect gravity;
-    private Rigidbody2D rb;
+    private GravityEffect _gravity;
+    private Rigidbody2D _rb;
 
     private void Awake()
     {
-        properties = GetComponent<PlayerProperties>();
-        gravity = GetComponent<GravityEffect>();
-        rb = GetComponent<Rigidbody2D>();
-        properties.currentPoints = properties.StartingPoints;
-        properties.currentFuel = properties.MaxFuel;
+        _properties = GetComponent<PlayerProperties>();
+        _gravity = GetComponent<GravityEffect>();
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.angularDamping = _properties.RotationDissipation;
     }
 
     private void FixedUpdate()
     {
         /*Since throttleDrag (affecting how fast throttle can change your trajectory) and velocityDissipation (affecting velocity loss when stopped) are directly timed,
          we're switching between the 2 for better control.*/
-        rb.linearDamping = properties.IsThrottling ? properties.ThrottleDrag : properties.VelocityDissipation;
+        _rb.linearDamping = _properties.IsThrottling ? _properties.ThrottleDrag : _properties.VelocityDissipation;
 
-        //Throttle is very different within orbit. Horizontal Throttle needs to be decreased to allow gravity to have proper effect, while vertical throttle needs to be increased to counter gravity properly.
+        //Throttle is very different within orbit. Horizontal Throttle needs to be decreased to allow _gravity to have proper effect, while vertical throttle needs to be increased to counter _gravity properly.
         float currentOrbitThrottleMultiplier = 1f;
-        if (gravity.isInOrbit)
+        if (_gravity.isInOrbit)
         {
-            float currentOrbitFacing = Mathf.Cos(gravity.currentPlanet.RotationDifference(gravity) * Mathf.Deg2Rad);
-            float multiplierDifference = Mathf.Abs(properties.OrbitVerticalThrottleMultiplier - properties.OrbitHorizontalThrottleMultiplier);
-            currentOrbitThrottleMultiplier = Mathf.Min(properties.OrbitVerticalThrottleMultiplier, properties.OrbitHorizontalThrottleMultiplier);
+            float currentOrbitFacing = Mathf.Cos(_gravity.currentPlanet.RotationDifference(_gravity) * Mathf.Deg2Rad);
+            float multiplierDifference = Mathf.Abs(_properties.OrbitVerticalThrottleMultiplier - _properties.OrbitHorizontalThrottleMultiplier);
+            currentOrbitThrottleMultiplier = Mathf.Min(_properties.OrbitVerticalThrottleMultiplier, _properties.OrbitHorizontalThrottleMultiplier);
             currentOrbitThrottleMultiplier += multiplierDifference * Mathf.Abs(currentOrbitFacing);
         }
         //Handles throttling behaviour
-        if (properties.IsThrottling)
+        if (_properties.IsThrottling)
         {
-            properties.currentThrottleDirection = Quaternion.Euler(0f, 0f, rb.rotation) * Vector2.up;
+            _properties.currentThrottleDirection = Quaternion.Euler(0f, 0f, _rb.rotation) * Vector2.up;
 
-            rb.AddForce(properties.currentThrottleDirection * properties.Acceleration * currentOrbitThrottleMultiplier + gravity.currentGravity);
+            _rb.AddForce(_properties.currentThrottleDirection * _properties.Acceleration * currentOrbitThrottleMultiplier + _gravity.currentGravity);
         }
         else
         {
-            rb.AddForce(gravity.currentGravity);
+            _rb.AddForce(_gravity.currentGravity);
         }
-        rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, properties.MaxThrottleSpeed);
+        _rb.linearVelocity = Vector2.ClampMagnitude(_rb.linearVelocity, _properties.MaxThrottleSpeed);
 
         //Handles turn behaviour
-        properties.currentTurnSpeed += properties.TurnAcceleration * properties.SteerInput;
-        properties.currentTurnSpeed = Mathf.Clamp(properties.currentTurnSpeed, -properties.MaxTurnSpeed, properties.MaxTurnSpeed);
-        float targetRotation = rb.rotation - properties.currentTurnSpeed;
-        rb.MoveRotation(targetRotation + gravity.orbitDelta);
+        //_properties.currentTurnSpeed += _properties.TurnAcceleration * _properties.SteerInput;
+        //_properties.currentTurnSpeed = Mathf.Clamp(_properties.currentTurnSpeed, -_properties.MaxTurnSpeed, _properties.MaxTurnSpeed);
+        //float targetRotation = _rb.rotation - _properties.currentTurnSpeed;
 
-        if (properties.SteerInput == 0)
+        _rb.AddTorque(-_properties.TurnAcceleration * _properties.SteerInput);
+        _rb.rotation += _gravity.orbitDelta;
+        _rb.angularVelocity = Mathf.Clamp(_rb.angularVelocity, -_properties.MaxTurnSpeed, _properties.MaxTurnSpeed);
+
+        if (_properties.SteerInput == 0)
         {
-            properties.currentTurnSpeed = Mathf.MoveTowards(properties.currentTurnSpeed, 0f, properties.RotationDissipation);
+            _properties.currentTurnSpeed = Mathf.MoveTowards(_properties.currentTurnSpeed, 0f, _properties.RotationDissipation);
         }
+    }
+
+    public void Pushback(Vector2 direction,float pushbackAmount, float torque)
+    {
+        if (pushbackAmount == 0) return;
+        _rb.linearVelocity = Vector2.zero;
+        _rb.angularVelocity = 0f;
+        _rb.AddForce(direction * pushbackAmount);
+        _rb.AddTorque(torque);
     }
 
     void OnMove(InputValue value)
     {
-        properties.movementInput = value.Get<Vector2>();
+        _properties.movementInput = value.Get<Vector2>();
     }
 }

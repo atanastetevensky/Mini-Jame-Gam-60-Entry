@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5814154264972015693}
   - component: {fileID: 1689779087576568137}
   - component: {fileID: 1905503385936858189}
-  - component: {fileID: 6552676219133011432}
   - component: {fileID: 3961921982703470584}
   - component: {fileID: 5514071391817581239}
   - component: {fileID: 7609601453957965160}
@@ -62,6 +61,7 @@ MonoBehaviour:
   _rotationDissipation: 0.1
   _orbitVerticalThrottleMultiplier: 0
   _orbitHorizontalThrottleMultiplier: 0
+  _maxHealth: 0
   _maxFuel: 0
   _fuelConsumptionRate: 0
   _startingPoints: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   currentThrottleSpeed: 0
   currentTurnSpeed: 0
   currentThrottleDirection: {x: 0, y: 0}
+  currentHealth: 0
   currentFuel: 0
   currentPoints: 0
 --- !u!114 &1905503385936858189
@@ -87,18 +88,6 @@ MonoBehaviour:
   _speed: 3
   _spawnOffset: {x: 0, y: 0}
   _grappleHookPrefab: {fileID: 0}
---- !u!114 &6552676219133011432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2280175602233347012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c2c9c210f5556249a07524ed24d17ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!114 &3961921982703470584
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,14 +10,14 @@ public class FuelGauge : MonoBehaviour
 
     void Start()
     {
-        _playerProperties = Game.Instance.GetPlayer.properties;
+        _playerProperties = Game.Instance.GetPlayer._properties;
         transformOriginalPosition = _gaugeTransform.position;
     }
 
     void Update()
     {
         float currentFuelNormalized = _playerProperties.currentFuel / _playerProperties.MaxFuel;
-        //Debug.Log($"player properties: {_playerProperties.currentFuel}, currentFuelNormalized: {currentFuelNormalized}");
+        //Debug.Log($"player _properties: {_playerProperties.currentFuel}, currentFuelNormalized: {currentFuelNormalized}");
 
         _gaugeTransform.position = transformOriginalPosition - new Vector2(0f, _gaugeBottomOffset) * (1f - currentFuelNormalized);
     }

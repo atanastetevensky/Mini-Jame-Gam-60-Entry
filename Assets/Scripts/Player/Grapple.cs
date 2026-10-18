@@ -10,7 +10,9 @@ public class Grapple : MonoBehaviour
     [SerializeField] private GameObject _grappleHookPrefab;
 
     public float Range => _range;
-    public float speed => _speed;
+    public float Speed => _speed;
+
+    public bool isGrappling = false;
 
     private Collider2D nearestCollider;
 
@@ -42,9 +44,11 @@ public class Grapple : MonoBehaviour
 
     void OnGrapple(InputValue inputValue)
     {
+        if (isGrappling) return;
         if (nearestCollider == null) return;
 
         GameObject hookInstance = GameObject.Instantiate(_grappleHookPrefab, (Vector2)transform.position + _spawnOffset, Quaternion.identity, this.transform);
         hookInstance.GetComponent<GrapplingHook>().targetObject = nearestCollider.gameObject;
+        isGrappling = true;
     }
 }
