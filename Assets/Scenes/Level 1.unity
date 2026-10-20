@@ -149876,22 +149876,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game
       objectReference: {fileID: 0}
-    - target: {fileID: 3515719989451166010, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.218
-      objectReference: {fileID: 0}
-    - target: {fileID: 4951986219796853458, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5099720419433909047, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
-      propertyPath: _storageSizeMultiplier
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5820351828940115677, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8683112520587098809, guid: 55647d8f79edb4140a35149f6138bf6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.3366933
