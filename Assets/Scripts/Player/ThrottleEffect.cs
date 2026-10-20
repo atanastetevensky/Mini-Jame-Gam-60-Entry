@@ -15,7 +15,7 @@ public class ThrottleEffect : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Game.Instance.gameOver)
+        if (Game.instance.gameOver)
         {
             _throttleSound.Stop();
             if(_currentThrottling) _releaseSound.Play();

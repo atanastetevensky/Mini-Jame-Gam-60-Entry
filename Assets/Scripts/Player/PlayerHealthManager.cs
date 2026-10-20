@@ -4,12 +4,11 @@ public class PlayerHealthManager : MonoBehaviour
 {
     [SerializeField] GameObject _explosionObjectPrefab;
     [SerializeField] GameObject _outOfShipPrefab;
-    [SerializeField] int _destroyFrame;
+    [SerializeField] int _destroyShipFrame;
 
     private Rigidbody2D _rb;
     private PlayerProperties _properties;
     private Animator _animator;
-    private Animator _explosionAnimator;
     private GameObject _explosionObject;
 
     private void Awake()
@@ -17,24 +16,11 @@ public class PlayerHealthManager : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _properties = GetComponent<PlayerProperties>();
         _animator = GetComponent<Animator>();
+        _properties.currentHealth = _properties.MaxHealth;
     }
 
     private void Update()
     {
-        if (_explosionAnimator == null) return;
-
-        int currentFrame = Utils.getCurrentFrameIndex(_explosionAnimator);
-        if (currentFrame != _destroyFrame) return;
-
-        _explosionAnimator = null;
-
-        GameObject outofShipInstance = Instantiate(_outOfShipPrefab, transform.position, Quaternion.identity, null);
-        _explosionObject.transform.parent = outofShipInstance.transform;
-        _explosionObject.transform.localPosition = Vector2.zero;
-        Rigidbody2D outOfShipRb = outofShipInstance.GetComponent<Rigidbody2D>();
-        outOfShipRb.linearVelocity = _rb.linearVelocity;
-        outOfShipRb.angularVelocity = _rb.angularVelocity;
-        this.gameObject.SetActive(false);
     }
 
     public void TakeDamage(float damageValue, DeathCause deathCause)
@@ -46,15 +32,19 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void Death(DeathCause deathCause)
     {
-        if (Game.Instance.gameOver) return;
+        if (Game.instance.gameOver) return;
 
-        Game.Instance.gameOver = true;
+        Game.instance.gameOver = true;
 
         switch (deathCause)
         {
-            case DeathCause.Crash:
-                CrashDeath();
+            case DeathCause.ObstacleCrash:
+                CrashDeath(true);
                 break;
+
+            case DeathCause.PlanetCrash:
+                CrashDeath(false);
+            break;
 
             case DeathCause.OutOfFuel:
                 OutOfFuelDeath();
@@ -62,10 +52,27 @@ public class PlayerHealthManager : MonoBehaviour
         }
     }
 
-    private void CrashDeath()
+    private void CrashDeath(bool enablePhysics)
     {
+        _rb.simulated = enablePhysics;
+
         _explosionObject = Instantiate(_explosionObjectPrefab, transform.position, Quaternion.identity, transform);
-        _explosionAnimator = _explosionObject.GetComponent<Animator>();
+        Animator explosionAnimator = _explosionObject.GetComponent<Animator>();
+        float frameTime = Utils.GetFrameTime(explosionAnimator);
+        float removeShipTime = frameTime * _destroyShipFrame;
+
+        new TimerManager.Timer(OnRemoveShipFrame, removeShipTime, false);
+    }
+
+    private void OnRemoveShipFrame()
+    {
+        GameObject outofShipInstance = Instantiate(_outOfShipPrefab, transform.position, Quaternion.identity, null);
+        _explosionObject.transform.parent = outofShipInstance.transform;
+        _explosionObject.transform.localPosition = Vector2.zero;
+        Rigidbody2D outOfShipRb = outofShipInstance.GetComponent<Rigidbody2D>();
+        outOfShipRb.linearVelocity = _rb.linearVelocity;
+        outOfShipRb.angularVelocity = _rb.angularVelocity;
+        this.gameObject.SetActive(false);
     }
 
     private void OutOfFuelDeath()
@@ -75,10 +82,11 @@ public class PlayerHealthManager : MonoBehaviour
         GetComponent<Grapple>().enabled = false;
     }
 
-    public enum DeathCause
-    {
-        OutOfFuel,
-        Crash
-    }
 
+}
+public enum DeathCause
+{
+    PlanetCrash,
+    ObstacleCrash,
+    OutOfFuel
 }

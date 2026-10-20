@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.Audio.GeneratorInstance;
 
 public class PlayerFuel : MonoBehaviour
 {
@@ -6,13 +7,18 @@ public class PlayerFuel : MonoBehaviour
     private PlayerMovement _player;
     private PlayerProperties _playerProperties;
     private GravityEffect _gravityEffect;
-    private Utils.Timer _timer;
+    private TimerManager.Timer _consumeTimer;
 
     void Start()
     {
         _player = GetComponent<PlayerMovement>();
         _playerProperties = GetComponent<PlayerProperties>();
         _gravityEffect = GetComponent<GravityEffect>();
+
+        _playerProperties.currentFuel = _playerProperties.MaxFuel;
+
+
+        _consumeTimer = new TimerManager.Timer(OnTimerPass, _playerProperties.FuelConsumptionRate, true);
     }
 
     void Update()
@@ -22,32 +28,19 @@ public class PlayerFuel : MonoBehaviour
         if(!_playerProperties.HasFuel)
         {
             PlayerHealthManager playerHealth = GetComponent<PlayerHealthManager>();
-            playerHealth.Death(PlayerHealthManager.DeathCause.OutOfFuel);
-            return;
-        }
-
-        if (!_playerProperties.IsThrottling)
-        {
-            _timer = null;
-            return;
-        }
-        if(_timer == null)
-        {
-            _timer = new Utils.Timer(_playerProperties.FuelConsumptionRate);
-        }
-        if(_timer.HasPassed())
-        {
-            ConsumeFuel();
-            _timer = null;
-            return;
+            playerHealth.Death(DeathCause.OutOfFuel);
         }
     }
 
-    private bool ConsumeFuel()
+    private void OnTimerPass()
     {
-        if (!_playerProperties.HasFuel) return false;
+        if (!_playerProperties.IsThrottling) return;
+        ConsumeFuel();
+    }
+
+    private void ConsumeFuel()
+    {
         _playerProperties.currentFuel = Mathf.Max(_playerProperties.currentFuel - 1f, 0f);
-        return true;
     }
 
     public void Refuel(float fuelAmount)

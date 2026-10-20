@@ -9,7 +9,7 @@ public class ScoreCounter : MonoBehaviour
     private void Start()
     {
         _scoreMesh = GetComponent<TextMeshProUGUI>();
-        _playerProperties = Game.Instance.Player._properties;
+        _playerProperties = Game.instance.Player._properties;
     }
 
     private void Update()

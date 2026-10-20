@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        _playerInput = Game.Instance.Player.GetComponent<PlayerInput>();
+        _playerInput = Game.instance.Player.GetComponent<PlayerInput>();
         _playerInput.DeactivateInput();
     }
 
@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
     {
         _pressedPlay = true;
 
-        Game.Instance.MainMenuActive = false;
+        Game.instance.MainMenuActive = false;
 
         _titleEffect.TriggerFade();
 

@@ -53,7 +53,7 @@ public class GravityEffect : MonoBehaviour
 
         if(applyRotation)
         {
-            rb.MoveRotation(rb.rotation + orbitDelta);
+            rb.rotation = rb.rotation + orbitDelta;
         }
 
         float distanceToCenter = Vector2.Distance(planet.transform.position, transform.position);

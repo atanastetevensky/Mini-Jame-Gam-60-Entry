@@ -104,6 +104,9 @@ MonoBehaviour:
   _orbitVerticalThrottleMultiplier: 1.4
   _orbitHorizontalThrottleMultiplier: 0.8
   _maxHealth: 30
+  _crashLayers:
+    serializedVersion: 2
+    m_Bits: 512
   _crashSpeedThreshold: 10
   _maxFuel: 5000
   _fuelConsumptionRate: 0.01
@@ -129,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthManager
   _explosionObjectPrefab: {fileID: 7513470071226176755, guid: 7e9939002addda54d9005547e36e6ad1, type: 3}
   _outOfShipPrefab: {fileID: 1995946083908939572, guid: 77eb305945b998f469de8a17d871dd2f, type: 3}
-  _destroyFrame: 5
+  _destroyShipFrame: 6
 --- !u!114 &1505152582204228555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,8 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GravityEffect
   _massUnderGravity: 1
-  applyGravity: 0
-  applyRotation: 0
+  applyGravity: 1
+  applyRotation: 1
   currentPlanet: {fileID: 0}
 --- !u!212 &7609601453957965160
 SpriteRenderer:

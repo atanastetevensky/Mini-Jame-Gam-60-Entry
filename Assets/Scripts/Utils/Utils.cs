@@ -7,6 +7,10 @@ public static class Utils
     {
         return boolean ? 1 : 0;
     }
+    public static bool LayerMaskContains(LayerMask mask, int layer)
+    {
+        return ((mask.value & (1 << layer)) != 0);
+    }
 
     public static Vector2 Nearest(Vector2 target, Vector2[] VectorArray)
     {
@@ -64,27 +68,28 @@ public static class Utils
         return frameIndex;
     }
 
+    public static float GetFrameTime(Animator animator)
+    {
+        AnimatorClipInfo[] clips = animator.GetCurrentAnimatorClipInfo(0);
+        AnimationClip clip = clips[0].clip;
+        float framesPerSecond = clip.frameRate * animator.speed;
+        return 1f / framesPerSecond;
+    }
+
     public class Timer
     {
         private float startTime;
         private float targetSeconds;
 
         private float Difference => UnityEngine.Time.time - startTime;
+        public bool HasPassed => Difference > targetSeconds;
+        
+        public float PassedValue => Mathf.Clamp01(Difference / targetSeconds);
 
         public Timer(float seconds)
         {
             startTime = UnityEngine.Time.time;
             targetSeconds = seconds;
-        }
-
-        public bool HasPassed()
-        {
-            return Difference > targetSeconds;
-        }
-
-        public float passedValue()
-        {
-            return Mathf.Clamp01(Difference / targetSeconds);
         }
     }
 }

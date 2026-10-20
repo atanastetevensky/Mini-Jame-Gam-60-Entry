@@ -38,13 +38,13 @@ public class FadeImageEffect : MonoBehaviour
         if (_timer == null) return;
 
         Color currentColor = _image.color;
-        if (_timer.HasPassed())
+        if (_timer.HasPassed)
         {
             _image.color = new Color(currentColor.r, currentColor.g, currentColor.b, _fadeIn ? 1f : 0f);
             Destroy(this);
             return;
         }
-        float currentValue = _fadeCurve.Evaluate(_timer.passedValue());
+        float currentValue = _fadeCurve.Evaluate(_timer.PassedValue);
 
         _image.color = new Color(currentColor.r, currentColor.g, currentColor.b, _fadeIn ? currentValue : 1f - currentValue);
     }

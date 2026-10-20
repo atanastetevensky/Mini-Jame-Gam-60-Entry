@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2484764893309447694}
   - component: {fileID: 8025932386217542193}
+  - component: {fileID: 6880187597598185134}
   - component: {fileID: 4633361477691909614}
-  - component: {fileID: 1138924776830251059}
+  - component: {fileID: 8530643680304718779}
   - component: {fileID: 8373127005742491803}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TrashCan(Storage)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +49,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StorageEntry
   points: 15
+--- !u!114 &6880187597598185134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077354806225374050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dab1a4fd0df1dd45800fa0608b9c6f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomizeVelocity
+  _minVelocity: {x: 1, y: 0}
+  _maxVelocity: {x: 3, y: 0}
 --- !u!212 &4633361477691909614
 SpriteRenderer:
   serializedVersion: 2
@@ -93,9 +108,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -2083106933
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 2029560079
+  m_SortingLayer: 5
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 06896c152dad0914389a2c762af1a7ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,8 +122,8 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &1138924776830251059
-BoxCollider2D:
+--- !u!58 &8530643680304718779
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,22 +152,12 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.010272026, y: -0.005135536}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.0891113, y: 1.1610165}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.1}
+  m_Radius: 0.4
 --- !u!50 &8373127005742491803
 Rigidbody2D:
   serializedVersion: 5
@@ -168,7 +173,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

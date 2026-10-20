@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7627572307109747821}
   - component: {fileID: 3007636999435832433}
   - component: {fileID: 5292538949261364245}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlanetWithStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,6 +188,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4897005487204750705}
     m_Modifications:
+    - target: {fileID: 2566289794147043335, guid: a5f34a12c7eae5a46bb17484f31ee0fe, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2627887037214987486, guid: a5f34a12c7eae5a46bb17484f31ee0fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.25
@@ -199,6 +203,10 @@ PrefabInstance:
     - target: {fileID: 3629866046955704357, guid: a5f34a12c7eae5a46bb17484f31ee0fe, type: 3}
       propertyPath: m_Name
       value: RefuelStation
+      objectReference: {fileID: 0}
+    - target: {fileID: 3629866046955704357, guid: a5f34a12c7eae5a46bb17484f31ee0fe, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3671300056960506375, guid: a5f34a12c7eae5a46bb17484f31ee0fe, type: 3}
       propertyPath: m_LocalScale.x
@@ -271,6 +279,10 @@ PrefabInstance:
     - target: {fileID: 8105596090768228042, guid: a5f34a12c7eae5a46bb17484f31ee0fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -13.971
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516323739326840968, guid: a5f34a12c7eae5a46bb17484f31ee0fe, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

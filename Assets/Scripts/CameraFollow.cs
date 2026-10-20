@@ -30,7 +30,7 @@ public class CameraFollow : MonoBehaviour
         _gravityEffect = _player.GetComponent<GravityEffect>();
         _camera = GetComponent<Camera>();
         transform.position = _player.position;
-        if(Game.Instance.MainMenuActive)
+        if(Game.instance.MainMenuActive)
         {
             transform.position += (Vector3) _mainMenuOffset;
             _camera.orthographicSize = _mainMenuProjectionSize;
@@ -40,7 +40,7 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         float currentProjectionSize = _gravityEffect.isInOrbit ? _orbitProjectionSize : _projectionSize;
-        if(Game.Instance.MainMenuActive)
+        if(Game.instance.MainMenuActive)
         {
             currentProjectionSize = _mainMenuProjectionSize;
         }
@@ -67,7 +67,7 @@ public class CameraFollow : MonoBehaviour
             targetRotation = Quaternion.LookRotation(Vector3.forward, playerDirection);
         }
 
-        if(Game.Instance.MainMenuActive)
+        if(Game.instance.MainMenuActive)
         {
             _currentMainMenuOffset = _mainMenuOffset;
         }

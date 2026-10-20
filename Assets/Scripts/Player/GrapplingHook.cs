@@ -30,8 +30,8 @@ public class GrapplingHook : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _playerGrapple = Game.Instance.Player.GetComponent<Grapple>();
-        _inventory = Game.Instance.Player.GetComponent<Inventory>();
+        _playerGrapple = Game.instance.Player.GetComponent<Grapple>();
+        _inventory = Game.instance.Player.GetComponent<Inventory>();
         _chainRenderer = _chainPrefab.GetComponent<SpriteRenderer>();
     }
 
@@ -42,7 +42,7 @@ public class GrapplingHook : MonoBehaviour
         //If the grappling hook has grabbed an item, store the item's position relative to the hook and keep the item at that position
         if (Grabbed)
         {
-            if(_grippedObject.transform.parent == null)
+            if(_grippedObject.transform.parent != transform)
             {
                 _grippedObject.transform.parent = transform;
                 _grabbedOffset = _grippedObject.transform.localPosition;
@@ -91,6 +91,7 @@ public class GrapplingHook : MonoBehaviour
         if (collectible == null) return;
         if (!collectible.gameObject.Equals(targetObject)) return;
 
+        collision.enabled = false;
         _grippedObject = collectible;
     }
 

@@ -14,8 +14,8 @@ TagManager:
   - Debris
   - Background
   - Collectibles
-  - 
-  - 
+  - Planet
+  - Inventory
   - 
   - 
   - 
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: Planet
     uniqueID: 2925549483
+    locked: 0
+  - name: Inventory
+    uniqueID: 2029560079
     locked: 0
   m_RenderingLayers:
   - Default

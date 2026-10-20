@@ -16,11 +16,8 @@ public class Obstacle : MonoBehaviour
         PlayerMovement playerMovement = collision.collider.GetComponent<PlayerMovement>();
         Rigidbody2D rb = collision.collider.attachedRigidbody;
 
-        Debug.Log($"Collided with: {collision.collider.gameObject.name}");
-
         if (playerHealth == null) return;
 
-        playerHealth.TakeDamage(_damageValue, PlayerHealthManager.DeathCause.Crash);
 
         Vector2 pushbackDirection = -contactPoint.normal;
         Vector2 pushbackForce = pushbackDirection * _pushbackValue;
@@ -29,6 +26,7 @@ public class Obstacle : MonoBehaviour
         float torque = radius.x * pushbackForce.y - radius.y * pushbackForce.x;
 
         playerMovement.Pushback(pushbackDirection, _pushbackValue, torque);
+        playerHealth.TakeDamage(_damageValue, DeathCause.ObstacleCrash);
 
         Destroy(gameObject);
     }

@@ -12,7 +12,7 @@ public class FadeEffect : MonoBehaviour
     private TextMeshProUGUI _textMesh;
     private Utils.Timer _timer;
 
-    public bool Completed => _timer != null && _timer.HasPassed();
+    public bool Completed => _timer != null && _timer.HasPassed;
 
     private void OnEnable()
     {
@@ -26,13 +26,13 @@ public class FadeEffect : MonoBehaviour
     private void Update()
     {
         if (_timer == null) return;
-        if(_timer.HasPassed())
+        if(_timer.HasPassed)
         {
             _textMesh.alpha = _fadeIn ? 1f : 0f;
             Destroy(this);
             return;
         }
-        float currentValue = _fadeCurve.Evaluate(_timer.passedValue());
+        float currentValue = _fadeCurve.Evaluate(_timer.PassedValue);
         _currentFade = currentValue;
         _textMesh.alpha = _fadeIn ? currentValue : 1f - currentValue;
     }

@@ -14,15 +14,19 @@ public class PlayerMovement : MonoBehaviour
         _gravity = GetComponent<GravityEffect>();
         _rb = GetComponent<Rigidbody2D>();
         _rb.angularDamping = _properties.RotationDissipation;
+        Debug.Log($"layers:{_properties.CrashLayers.value}");
     }
 
     private void FixedUpdate()
     {
-        /*Since throttleDrag (affecting how fast throttle can change your trajectory) and velocityDissipation (affecting velocity loss when stopped) are directly timed,
-         we're switching between the 2 for better control.*/
+        // Since throttleDrag (affecting how fast throttle can change your trajectory) and
+        // velocityDissipation (affecting velocity loss when stopped) are directly tied,
+        // we're switching between the 2 for better control.
         _rb.linearDamping = _properties.IsThrottling ? _properties.ThrottleDrag : _properties.VelocityDissipation;
 
-        //Throttle is very different within orbit. Horizontal Throttle needs to be decreased to allow _gravity to have proper effect, while vertical throttle needs to be increased to counter _gravity properly.
+        // Throttle is very different within orbit. Horizontal Throttle needs to be decreased to allow
+        // _gravity to have proper effect, while vertical throttle needs to be increased to counter
+        // _gravity properly.
         float currentOrbitThrottleMultiplier = 1f;
         if (_gravity.isInOrbit)
         {
@@ -31,21 +35,19 @@ public class PlayerMovement : MonoBehaviour
             currentOrbitThrottleMultiplier = Mathf.Min(_properties.OrbitVerticalThrottleMultiplier, _properties.OrbitHorizontalThrottleMultiplier);
             currentOrbitThrottleMultiplier += multiplierDifference * Mathf.Abs(currentOrbitFacing);
         }
+
         //Handles throttling behaviour
         if (_properties.IsThrottling)
         {
             _properties.currentThrottleDirection = Quaternion.Euler(0f, 0f, _rb.rotation) * Vector2.up;
 
-            _rb.AddForce(_properties.currentThrottleDirection * _properties.Acceleration * currentOrbitThrottleMultiplier + _gravity.currentGravity);
+            _rb.AddForce(_properties.currentThrottleDirection * _properties.Acceleration * currentOrbitThrottleMultiplier);
         }
-        else
-        {
-            _rb.AddForce(_gravity.currentGravity);
-        }
+
         _rb.linearVelocity = Vector2.ClampMagnitude(_rb.linearVelocity, _properties.MaxThrottleSpeed);
 
+        //Handles steer behaviour
         _rb.AddTorque(-_properties.TurnAcceleration * _properties.SteerInput);
-        _rb.rotation += _gravity.orbitDelta;
         _rb.angularVelocity = Mathf.Clamp(_rb.angularVelocity, -_properties.MaxTurnSpeed, _properties.MaxTurnSpeed);
 
         if (_properties.SteerInput == 0)
@@ -70,12 +72,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Game.Instance.gameOver) return;
+        Crash(collision);
+    }
+
+    public void Crash(Collision2D collision)
+    {
+        if (!Utils.LayerMaskContains(_properties.CrashLayers, collision.gameObject.layer)) return;
         float impactSpeed = collision.relativeVelocity.magnitude;
-        if(impactSpeed > _properties.CrashSpeedThreshold)
+        if (impactSpeed > _properties.CrashSpeedThreshold)
         {
             PlayerHealthManager playerHealth = GetComponent<PlayerHealthManager>();
-            playerHealth.Death(PlayerHealthManager.DeathCause.Crash);
+            playerHealth.Death(DeathCause.PlanetCrash);
         }
     }
 }
