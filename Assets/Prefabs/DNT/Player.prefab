@@ -198,6 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2104f8bbc0f7d8b409e39876f32bd1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  _storageSizeMultiplier: 0.8
+  _inventoryParent: {fileID: 0}
+  _inventorySpawnPoint: {fileID: 0}
 --- !u!114 &5514071391817581239
 MonoBehaviour:
   m_ObjectHideFlags: 0

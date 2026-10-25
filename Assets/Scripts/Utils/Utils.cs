@@ -49,6 +49,18 @@ public static class Utils
         return nearestObject;
     }
 
+    public static Vector2 RandomDirection()
+    {
+        Vector2 newDirection;
+        do
+        {
+            float xDirection = UnityEngine.Random.Range(-1f, 1f);
+            float yDirection = UnityEngine.Random.Range(-1f, 1f);
+            newDirection = new Vector2(xDirection, yDirection).normalized;
+        } while (newDirection == Vector2.zero);
+        return newDirection;
+    }
+
     public static float GetDirectionDegree(Vector2 originPosition, Vector2 targetPosition)
     {
         Vector2 direction = targetPosition - originPosition;

@@ -3290,7 +3290,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a6a664eae39fb4d40915c1a0997f341d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3633,10 +3633,6 @@ PrefabInstance:
       propertyPath: _inventorySpawnPoint
       value: 
       objectReference: {fileID: 4156300679336094825}
-    - target: {fileID: 3961921982703470584, guid: b13c6de78ebb0764482bcb1f72b5ed9e, type: 3}
-      propertyPath: _storageSizeMultiplier
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 5814154264972015693, guid: b13c6de78ebb0764482bcb1f72b5ed9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
